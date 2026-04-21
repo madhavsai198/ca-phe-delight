@@ -39,7 +39,7 @@ export function SiteFooter() {
         <div>
           <h4 className="font-serif text-lg mb-3">Order & follow</h4>
           <ul className="space-y-2 text-sm">
-            <li><a href="https://www.zomato.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent">Zomato</a></li>
+            <li><a href="https://www.zomato.com/hyderabad/ca-phe-bistro-nanakramguda" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent">Zomato</a></li>
             <li><a href="https://www.swiggy.com/dineout" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent">Swiggy Dineout</a></li>
             <li>
               <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent">

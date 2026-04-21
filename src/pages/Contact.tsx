@@ -116,7 +116,7 @@ const Contact = () => {
                 <div>
                   <p className="font-medium">Order online</p>
                   <div className="flex flex-wrap gap-x-3 gap-y-1 text-muted-foreground text-sm">
-                    <a href="https://www.zomato.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Zomato</a>
+                    <a href="https://www.zomato.com/hyderabad/ca-phe-bistro-nanakramguda" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Zomato</a>
                     <span>·</span>
                     <a href="https://www.swiggy.com/dineout" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Swiggy Dineout</a>
                     <span>·</span>

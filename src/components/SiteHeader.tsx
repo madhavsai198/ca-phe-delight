@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
 import { cn } from "@/lib/utils";
 
+import { ReserveTableDialog } from "./ReserveTableDialog";
+
 const links = [
   { to: "/", label: "Home" },
   { to: "/menu", label: "Menu" },
@@ -37,13 +39,8 @@ export function SiteHeader() {
       )}
     >
       <div className="container flex h-16 md:h-20 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <span className="grid place-items-center h-9 w-9 rounded-full bg-gradient-accent shadow-glow">
-            <Coffee className="h-4 w-4 text-accent-foreground" />
-          </span>
-          <span className="font-serif text-xl md:text-2xl font-semibold tracking-wide">
-            Ca Phe <span className="text-gradient">Bistro</span>
-          </span>
+        <Link to="/" className="flex items-center group">
+          <img src="/logo.png" alt="Ca Phe Bistro Logo" className="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
@@ -97,6 +94,7 @@ export function SiteHeader() {
               </motion.span>
             </AnimatePresence>
           </Button>
+          <ReserveTableDialog />
           <Button asChild className="hidden md:inline-flex rounded-full bg-gradient-accent text-accent-foreground hover:opacity-90 shadow-soft">
             <Link to="/menu">View Menu</Link>
           </Button>

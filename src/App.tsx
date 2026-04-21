@@ -12,6 +12,7 @@ import Contact from "./pages/Contact.tsx";
 import Auth from "./pages/Auth.tsx";
 import Admin from "./pages/Admin.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import { IntroAnimation } from "./components/IntroAnimation";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <IntroAnimation />
       <BrowserRouter>
         <Routes>
           <Route element={<SiteLayout />}>
