@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Coffee, GlassWater, Cake, UtensilsCrossed, Loader2 } from "lucide-react";
+import { Coffee, GlassWater, Cake, UtensilsCrossed, Loader2, Search, X } from "lucide-react";
 import api from "@/lib/api";
 import { Seo } from "@/components/Seo";
 import { cn } from "@/lib/utils";
@@ -111,6 +111,7 @@ const Menu = () => {
   const [items, setItems] = useState<MenuItem[]>(USE_FRONTEND_ONLY ? HARDCODED_ITEMS : []);
   const [loading, setLoading] = useState(!USE_FRONTEND_ONLY);
   const [active, setActive] = useState<string>("All");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     if (USE_FRONTEND_ONLY) {
@@ -129,10 +130,14 @@ const Menu = () => {
     })();
   }, []);
 
-  const filtered = useMemo(
-    () => (active === "All" ? items : items.filter((i) => i.category === active)),
-    [items, active]
-  );
+  const filtered = useMemo(() => {
+    let list = active === "All" ? items : items.filter((i) => i.category === active);
+    if (query.trim()) {
+      const q = query.trim().toLowerCase();
+      list = list.filter((i) => i.name.toLowerCase().includes(q));
+    }
+    return list;
+  }, [items, active, query]);
 
   return (
     <>
@@ -173,6 +178,27 @@ const Menu = () => {
               </button>
             );
           })}
+        </div>
+
+        {/* Search bar */}
+        <div className="mt-6 max-w-md mx-auto relative">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search menu items…"
+            className="w-full rounded-full border border-border bg-card pl-10 pr-10 py-2.5 text-sm shadow-soft outline-none focus:ring-2 focus:ring-accent/40 transition-all placeholder:text-muted-foreground"
+          />
+          {query && (
+            <button
+              onClick={() => setQuery("")}
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Clear search"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
         </div>
 
         {/* Items */}
@@ -233,7 +259,9 @@ const Menu = () => {
         )}
 
         {!loading && filtered.length === 0 && (
-          <p className="text-center text-muted-foreground py-16">No items in this category yet.</p>
+          <p className="text-center text-muted-foreground py-16">
+            {query ? `No results for "${query}"` : 'No items in this category yet.'}
+          </p>
         )}
       </section>
     </>

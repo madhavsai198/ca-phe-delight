@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Coffee, Clock, MapPin, Star, Utensils, Sparkles } from "lucide-react";
@@ -14,7 +15,29 @@ const fadeUp = {
   transition: { duration: 0.7, ease: "easeOut" as const },
 };
 
+// Returns true if current IST time is within 9:00 AM – 10:30 PM
+const getIsOpen = () => {
+  const now = new Date();
+  // Convert to IST (UTC+5:30)
+  const istOffset = 5.5 * 60 * 60 * 1000;
+  const ist = new Date(now.getTime() + istOffset - (now.getTimezoneOffset() * 60 * 1000));
+  // Wait — just use toLocaleString with IST to get hours/minutes
+  const istStr = now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false });
+  const [h, m] = istStr.split(':').map(Number);
+  const totalMinutes = h * 60 + m;
+  const openTime  = 9 * 60;        // 9:00 AM
+  const closeTime = 22 * 60 + 30;  // 10:30 PM
+  return totalMinutes >= openTime && totalMinutes < closeTime;
+};
+
 const Index = () => {
+  const [isOpen, setIsOpen] = useState(getIsOpen);
+
+  // Re-check every 60 seconds
+  useEffect(() => {
+    const id = setInterval(() => setIsOpen(getIsOpen()), 60_000);
+    return () => clearInterval(id);
+  }, []);
   return (
     <>
       <Seo
@@ -88,8 +111,19 @@ const Index = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
-              className="mt-12 flex flex-wrap gap-6 text-sm text-white/80"
+              className="mt-12 flex flex-wrap items-center gap-5 text-sm text-white/80"
             >
+              {/* Open / Closed badge */}
+              <span
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold tracking-wide ${
+                  isOpen
+                    ? 'bg-emerald-500/25 text-emerald-300 ring-1 ring-emerald-400/40'
+                    : 'bg-red-500/25 text-red-300 ring-1 ring-red-400/40'
+                }`}
+              >
+                <span className={`h-2 w-2 rounded-full ${isOpen ? 'bg-emerald-400 animate-pulse' : 'bg-red-400'}`} />
+                {isOpen ? 'Open now' : 'Closed'}
+              </span>
               <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4 text-accent" /> 9:00 AM – 10:30 PM</span>
               <span className="inline-flex items-center gap-2"><Star className="h-4 w-4 text-accent" /> ₹900 for two</span>
               <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4 text-accent" /> Financial District</span>
