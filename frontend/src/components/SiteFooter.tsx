@@ -20,7 +20,17 @@ export function SiteFooter() {
         <div>
           <h4 className="font-serif text-lg mb-3">Visit</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-accent" /> Financial District, Hyderabad</li>
+            <li className="flex items-start gap-2">
+              <MapPin className="h-4 w-4 mt-0.5 text-accent" />
+              <a 
+                href="https://www.google.com/maps?q=Ca+Phe+Bistro+Financial+District+Hyderabad" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-accent"
+              >
+                Financial District, Hyderabad
+              </a>
+            </li>
             <li className="flex items-start gap-2"><Clock className="h-4 w-4 mt-0.5 text-accent" /> 9:00 AM – 10:30 PM, daily</li>
             <li className="flex items-start gap-2"><Phone className="h-4 w-4 mt-0.5 text-accent" /> <a href="tel:+919966983249" className="hover:text-accent">+91 99669 83249</a></li>
           </ul>

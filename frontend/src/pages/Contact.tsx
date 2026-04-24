@@ -127,10 +127,20 @@ const Contact = () => {
               </li>
             </ul>
 
+            <Button asChild variant="outline" className="w-full rounded-full mt-2">
+              <a 
+                href="https://www.google.com/maps?q=Ca+Phe+Bistro+Financial+District+Hyderabad" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <MapPin className="h-4 w-4 mr-2" /> Open in Maps
+              </a>
+            </Button>
+
             <div className="rounded-2xl overflow-hidden border border-border shadow-soft">
               <iframe
                 title="Ca Phe Bistro location"
-                src="https://www.google.com/maps?q=Financial+District+Hyderabad&output=embed"
+                src="https://www.google.com/maps?q=Ca+Phe+Bistro+Financial+District+Hyderabad&output=embed"
                 className="w-full h-64 border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
