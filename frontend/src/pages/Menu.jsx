@@ -146,7 +146,19 @@ const Menu = () => {
               {filtered.map((item, i) => (
                 <motion.article layout key={item._id || item.id} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ duration: 0.4, delay: (i % 9) * 0.04 }} className="group relative rounded-2xl overflow-hidden bg-card border border-border shadow-soft hover:shadow-elegant hover:-translate-y-1 transition-all duration-500">
                   <div className="relative h-52 overflow-hidden">
-                    {item.image_url ? (<img src={item.image_url} alt={item.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />) : (<div className="w-full h-full bg-secondary grid place-items-center"><Coffee className="h-8 w-8 text-muted-foreground" /></div>)}
+                    {item.image_url ? (
+                      <img 
+                        src={item.image_url} 
+                        alt={item.name} 
+                        loading="lazy" 
+                        width={600}
+                        height={400}
+                        decoding="async"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-secondary grid place-items-center"><Coffee className="h-8 w-8 text-muted-foreground" /></div>
+                    )}
                     <span className="absolute top-3 left-3 glass text-xs font-medium px-3 py-1 rounded-full">{item.category}</span>
                   </div>
                   <div className="p-5">

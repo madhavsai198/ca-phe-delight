@@ -5,15 +5,15 @@ import dessertImg from "@/assets/dessert.jpg";
 import heroImg from "@/assets/hero-coffee.jpg";
 
 const photos = [
-  { src: heroImg, alt: "Latte art on marble", className: "md:col-span-2 md:row-span-2 h-[420px] md:h-auto" },
-  { src: ambienceImg, alt: "Café interior at golden hour", className: "h-[260px]" },
-  { src: dessertImg, alt: "Tiramisu and espresso", className: "h-[260px]" },
-  { src: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=1200&q=80", alt: "Wooden coffee bar", className: "h-[260px]" },
-  { src: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=1200&q=80", alt: "Pour over coffee", className: "h-[260px]" },
-  { src: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=1200&q=80&sat=-20", alt: "Bookshelf nook", className: "h-[260px]" },
-  { src: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=1200&q=80", alt: "Continental brunch plate", className: "h-[260px]" },
-  { src: "https://images.unsplash.com/photo-1525193612562-0ec53b0e5d7c?w=1200&q=80", alt: "Pizza on wooden board", className: "h-[260px]" },
-  { src: "https://images.unsplash.com/photo-1481833761820-0509d3217039?w=1200&q=80", alt: "Cold brew with citrus", className: "h-[260px]" },
+  { src: heroImg, alt: "Latte art on marble", className: "md:col-span-2 md:row-span-2 h-[420px] md:h-auto", w: 1200, h: 800 },
+  { src: ambienceImg, alt: "Café interior at golden hour", className: "h-[260px]", w: 800, h: 600 },
+  { src: dessertImg, alt: "Tiramisu and espresso", className: "h-[260px]", w: 800, h: 600 },
+  { src: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&q=80&fm=webp", alt: "Wooden coffee bar", className: "h-[260px]", w: 800, h: 600 },
+  { src: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800&q=80&fm=webp", alt: "Pour over coffee", className: "h-[260px]", w: 800, h: 600 },
+  { src: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&q=80&sat=-20&fm=webp", alt: "Bookshelf nook", className: "h-[260px]", w: 800, h: 600 },
+  { src: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=800&q=80&fm=webp", alt: "Continental brunch plate", className: "h-[260px]", w: 800, h: 600 },
+  { src: "https://images.unsplash.com/photo-1525193612562-0ec53b0e5d7c?w=800&q=80&fm=webp", alt: "Pizza on wooden board", className: "h-[260px]", w: 800, h: 600 },
+  { src: "https://images.unsplash.com/photo-1481833761820-0509d3217039?w=800&q=80&fm=webp", alt: "Cold brew with citrus", className: "h-[260px]", w: 800, h: 600 },
 ];
 
 const Gallery = () => (
@@ -48,6 +48,9 @@ const Gallery = () => (
               src={p.src}
               alt={p.alt}
               loading="lazy"
+              width={p.w}
+              height={p.h}
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

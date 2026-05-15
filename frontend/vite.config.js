@@ -19,4 +19,23 @@ export default defineConfig(({ mode }) => ({
     },
     dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime", "@tanstack/react-query", "@tanstack/query-core"],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom', 'react-router-dom', '@tanstack/react-query'],
+          'ui-core': ['framer-motion', 'lucide-react', 'clsx', 'tailwind-merge'],
+          'radix': [
+            '@radix-ui/react-accordion',
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-popover',
+            '@radix-ui/react-tooltip',
+            '@radix-ui/react-select'
+          ],
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000,
+  }
 }));

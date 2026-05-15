@@ -34,7 +34,16 @@ const Index = () => {
       <Seo title="Ca Phe Bistro — Premium Café in Financial District, Hyderabad" description="Slow-crafted coffee, continental plates and a warm modern ambience. Open 9 AM – 10:30 PM in Financial District, Hyderabad." />
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="Latte art served at Ca Phe Bistro" className="h-full w-full object-cover" width={1920} height={1080} />
+          <img 
+            src={heroImg} 
+            alt="Latte art served at Ca Phe Bistro" 
+            className="h-full w-full object-cover" 
+            width={1920} 
+            height={1080} 
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+          />
           <div className="absolute inset-0 bg-gradient-hero" />
         </div>
         <div className="relative container min-h-[88vh] flex items-center py-24">
@@ -91,7 +100,15 @@ const Index = () => {
               <img src={ambienceImg} alt="Café interior" className="w-full h-[480px] object-cover" loading="lazy" width={1600} height={1080} />
             </div>
             <div className="hidden md:block absolute -bottom-8 -right-8 w-48 h-48 rounded-3xl overflow-hidden shadow-elegant border-4 border-background">
-              <img src={dessertImg} alt="Tiramisu dessert" className="w-full h-full object-cover" loading="lazy" />
+              <img 
+                src={dessertImg} 
+                alt="Tiramisu dessert" 
+                className="w-full h-full object-cover" 
+                loading="lazy" 
+                width={400} 
+                height={400} 
+                decoding="async"
+              />
             </div>
           </motion.div>
           <motion.div {...fadeUp}>
